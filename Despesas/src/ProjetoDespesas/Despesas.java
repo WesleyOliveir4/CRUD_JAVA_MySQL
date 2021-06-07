@@ -23,30 +23,44 @@ public class Despesas {
      */
     public static void main(String[] args) throws SQLException, ClassNotFoundException {
         // TODO code application logic here
+        int ops = 0;
+        while(ops < 6){
+        JOptionPane.showMessageDialog(null, "ENTRE 1- Cadastrar Despesa \n ENTRE 2- Listar Despesa \n ENTRE 3- Buscar Despesa \n ENTRE 4- Total de gastos \n ENTRE 5- Excluir gasto \n ENTRE 6- Sair");
+        ops = Integer.parseInt(JOptionPane.showInputDialog("OPÇÃO"));
 
-        JOptionPane.showMessageDialog(null, "ENTRE 1- Cadastrar Despesa \n ENTRE 2- Listar Despesa \n ENTRE 3- Buscar Despesa");
-        int ops = Integer.parseInt(JOptionPane.showInputDialog("OPÇÃO"));
-
-        if (ops == 1) {
-            ManterDespesas.Cadastrar();
-            // ManterDespesas.Buscar();
-            // ManterDespesas.Alterar();
-            // ManterDespesas.Listar();
-            //ManterDespesas.Excluir();
-        }
-        if (ops == 2) {
-
-            ManterDespesas.Listar();
-
-        }
-        if (ops == 3) {
-
-            ManterDespesas.Buscar();
-
-        }
-       
+        switch(ops){
+    case 1 :
+        ManterDespesas.Cadastrar();
+        
+        break;
+    
+    case 2:
+        ManterDespesas.Listar();
+        break;
+    
+    case 3 :
+        ManterDespesas.Buscar();
+        break;
+    
+    case 4 :
+         ManterDespesas.Somar();
+        break;
+    
+    case 5 :
+          ManterDespesas.Excluir();
+        break;
+        
+    case 6 :
+         
+        break;
+   
 }
 
+        }
+    
+   
+
+}
 }
     
 

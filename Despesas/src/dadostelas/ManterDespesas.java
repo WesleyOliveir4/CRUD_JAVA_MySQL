@@ -7,6 +7,7 @@ package dadostelas;
 
 import dadosbean.Despesas;
 import dadoscontrole.ControleDespesas;
+import dadosdao.DaoDespesas;
 import java.sql.SQLException;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -35,13 +36,14 @@ public class ManterDespesas {
     }
     
     public static void Listar() throws SQLException, ClassNotFoundException {
-        Id      =   Integer.parseInt(JOptionPane.showInputDialog("Id"));
-        Despesas sEntrada = new Despesas(Id);
+       Id      =   Integer.parseInt(JOptionPane.showInputDialog("Id"));
+       Despesas sEntrada = new Despesas(Id);
         contD = new ControleDespesas();
         List<Despesas> sSaida = contD.listar(sEntrada);
         sSaida.forEach((sServ) -> {
             JOptionPane.showMessageDialog(null,sServ.toString());
         });
+       
     }
 
     public static void Alterar() throws SQLException, ClassNotFoundException {
@@ -69,5 +71,10 @@ public class ManterDespesas {
         Despesas sSaida = contD.excluir(sEntrada);
         JOptionPane.showMessageDialog(null, sSaida.toString());
     }
+    public static void Somar() throws SQLException, ClassNotFoundException {
+
+DaoDespesas s = new DaoDespesas();
+s.calcularTotal();
+}
 }
 

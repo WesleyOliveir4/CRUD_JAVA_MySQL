@@ -29,7 +29,7 @@ public class DaoDespesas {
     }
 
     public Despesas buscar(Despesas s) throws SQLException {
-        String sql = "select * from svc_Despesas WHERE svc_id = ?";
+        String sql = "select * from svc_Despesas WHERE svc_Id = ?";
         Despesas retorno;
         // seta os valores
         try (PreparedStatement stmt = this.c.prepareStatement(sql)) {
@@ -77,7 +77,7 @@ public class DaoDespesas {
     }
 
     public Despesas alterar(Despesas s) throws SQLException {
-        String sql = "UPDATE svc_Despesas SET svc_Item = ?, svc_Valor = ?,WHERE svc_id = ?";
+        String sql = "UPDATE svc_Despesas SET svc_Item = ?, svc_Valor = ?,WHERE svc_Id = ?";
         // seta os valores
         try ( // prepared statement para inserção
                 PreparedStatement stmt = c.prepareStatement(sql)) {
@@ -94,7 +94,7 @@ public class DaoDespesas {
     }
 
     public Despesas excluir(Despesas s) throws SQLException {
-        String sql = "delete from svc_Despesas WHERE svc_id = ?";
+        String sql = "delete from svc_Despesas WHERE svc_Id = ?";
         // seta os valores
         try ( // prepared statement para inserção
                 PreparedStatement stmt = c.prepareStatement(sql)) {
@@ -110,8 +110,8 @@ public class DaoDespesas {
     public List<Despesas> listar(Despesas s) throws SQLException {
         // usus: array armazena a lista de registros
         List<Despesas> serv = new ArrayList<>();
-
-        String sql = "select * from svc_Despesas where svc_id like ?";
+        
+        String sql = "select * from svc_Despesas where svc_Id like ?";
         // seta os valores
         try (PreparedStatement stmt = this.c.prepareStatement(sql)) {
             // seta os valores
@@ -133,5 +133,27 @@ public class DaoDespesas {
         return serv;
     }
     
+    
+    public void calcularTotal(){
+double total = 0;
+try {
+Statement stm = c.createStatement();
+
+
+
+ResultSet rs = stm.executeQuery("SELECT sum(svc_Valor)AS total FROM svc_Despesas");
+while (rs.next()) {
+total = rs.getDouble("total");
+}
+} catch (SQLException e) {
+// TODO Auto-generated catch block
+e.printStackTrace();
+}
+
+JOptionPane.showMessageDialog(null, "Valor total em R$ : " + total);
+
+
+
+}
 }
       
