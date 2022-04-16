@@ -8,7 +8,7 @@ svc_Id int not null auto_increment,
 
 
 
-svc_Item varchar(25) not null,
+svc_Item varchar(30) not null,
 
 
 
